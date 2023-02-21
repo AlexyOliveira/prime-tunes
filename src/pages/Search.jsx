@@ -19,7 +19,6 @@ function Search() {
     setsearchInput('');
     setLoading(true);
     const songsResponse = await searchAlbumsAPI(searchInput);
-    console.log(songsResponse);
     setLoading(false);
     setSongs(songsResponse);
   };

@@ -22,9 +22,16 @@ function Album() {
   return (
     <div data-testid="page-album">
       <Header />
-      <h1 data-testid="artist-name">{musics[0]?.artistName}</h1>
-      <h3 data-testid="album-name">{musics[0]?.collectionName}</h3>
-      <MusicCard tracks={ musics.slice(1) } />
+      {
+        loading ? <h2>Carregando...</h2> : (
+          <>
+            <h1 data-testid="artist-name">{musics[0]?.artistName}</h1>
+            <h3 data-testid="album-name">{musics[0]?.collectionName}</h3>
+            <MusicCard tracks={ musics.slice(1) } />
+          </>
+        )
+      }
+
     </div>
   );
 }
