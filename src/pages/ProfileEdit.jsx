@@ -15,7 +15,6 @@ function ProfileEdit() {
       const data = await getUser();
       setUser(data);
       setLoading(false);
-      console.log(data);
     };
     getUserApi();
   }, []);

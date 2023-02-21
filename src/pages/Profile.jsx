@@ -13,7 +13,6 @@ function Profile() {
       const data = await getUser();
       setUserData(data);
       setLoading(false);
-      console.log(data);
     };
     getUserApi();
   }, []);

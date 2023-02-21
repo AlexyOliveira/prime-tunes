@@ -1,9 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
-import { addSong, getFavoriteSongs, removeSong } from '../services/favoriteSongsAPI';
+import {
+  addSong,
+  getFavoriteSongs,
+  removeSong,
+} from '../services/favoriteSongsAPI';
 import getMusics from '../services/musicsAPI';
 import { saveEdited } from '../redux/actions/index';
+import '../css/MusicCard.css';
 
 function MusicCard({ tracks }) {
   const [loading, setLoading] = useState(false);
@@ -56,12 +61,21 @@ function MusicCard({ tracks }) {
                 htmlFor={ track.trackId }
                 data-testid={ `checkbox-music-${track.trackId}` }
               >
-                Favorita
+                <div
+                  className={
+                    favoriteSongs?.some((fav) => fav.trackId === track.trackId)
+                      ? 'favorite'
+                      : 'unfavorite'
+                  }
+                />
                 <input
                   onChange={ () => handleFavClick(track.trackId) }
                   type="checkbox"
+                  className="my-checkbox"
                   id={ track.trackId }
-                  checked={ favoriteSongs?.some((fav) => fav.trackId === track.trackId) }
+                  checked={ favoriteSongs?.some(
+                    (fav) => fav.trackId === track.trackId,
+                  ) }
                 />
               </label>
             </li>
