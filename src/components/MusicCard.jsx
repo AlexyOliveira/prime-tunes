@@ -1,16 +1,20 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import { addSong, getFavoriteSongs } from '../services/favoriteSongsAPI';
+import { useDispatch } from 'react-redux';
+import { addSong, getFavoriteSongs, removeSong } from '../services/favoriteSongsAPI';
 import getMusics from '../services/musicsAPI';
+import { saveEdited } from '../redux/actions/index';
 
 function MusicCard({ tracks }) {
   const [loading, setLoading] = useState(false);
   const [favoriteSongs, setFavoriteSongs] = useState([]);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const getFavorite = async () => {
       const favSongs = await getFavoriteSongs();
       setFavoriteSongs(favSongs);
+      dispatch(saveEdited(favSongs));
     };
     getFavorite();
   }, [loading]);
@@ -21,8 +25,8 @@ function MusicCard({ tracks }) {
 
     const sameVerify = getFav.some((fav) => fav.trackId === id);
     if (sameVerify) {
-      const diferent = getFav.filter((fav) => fav.trackId !== id);
-      localStorage.setItem('favorite_songs', JSON.stringify(diferent));
+      const response = await getMusics(id);
+      await removeSong(response.pop());
     } else if (!sameVerify) {
       const response = await getMusics(id);
       await addSong(response.pop());
@@ -30,6 +34,7 @@ function MusicCard({ tracks }) {
 
     setLoading(false);
   };
+
   return (
     <div>
       {loading ? (
@@ -48,17 +53,15 @@ function MusicCard({ tracks }) {
                 <track kind="captions" />
               </audio>
               <label
-                htmlFor="trackId"
+                htmlFor={ track.trackId }
                 data-testid={ `checkbox-music-${track.trackId}` }
               >
                 Favorita
                 <input
-                  className="check"
                   onChange={ () => handleFavClick(track.trackId) }
                   type="checkbox"
-                  id="trackId"
-                  checked={ favoriteSongs.some((fav) => fav.trackId === track.trackId) }
-                  name="favSong"
+                  id={ track.trackId }
+                  checked={ favoriteSongs?.some((fav) => fav.trackId === track.trackId) }
                 />
               </label>
             </li>
