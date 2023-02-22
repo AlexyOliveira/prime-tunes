@@ -54,7 +54,7 @@ function Login() {
               data-testid="login-submit-button"
               disabled={ nameInput.length < nameLengthMin }
               onClick={ handleClick }
-              type="button"
+              type="submit"
             >
               Entrar
             </button>
