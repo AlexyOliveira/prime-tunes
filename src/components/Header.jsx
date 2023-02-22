@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { getUser } from '../services/userAPI';
+import './Header.css';
+import logo from '../images/login-logo.png';
+import loadingGif from '../images/loading.gif';
 
 function Header() {
   const [loading, setLoading] = useState(false);
@@ -17,21 +20,26 @@ function Header() {
   }, []);
 
   return (
-    <div data-testid="header-component">
-      Header
-      {loading ? (
-        <h2>Carregando...</h2>
-      ) : (
-        <>
-          <h3 data-testid="header-user-name">{user}</h3>
-          <div className="links">
-            <nav>
-              <Link data-testid="link-to-search" to="/search">Search</Link>
-              <Link data-testid="link-to-favorites" to="/favorites">Favorites</Link>
-              <Link data-testid="link-to-profile" to="/profile">Profile</Link>
-            </nav>
-          </div>
-        </>)}
+    <div className="header-component" data-testid="header-component">
+      <img className="logo-header" src={ logo } alt="logo" />
+      <div className="links">
+        <nav>
+
+          <Link className="link" data-testid="link-to-search" to="/search">
+            <i className="fa-solid fa-magnifying-glass" />
+            Search
+          </Link>
+          <Link className="link" data-testid="link-to-favorites" to="/favorites">
+            <i className="fa-regular fa-star" />
+            Favorites
+          </Link>
+          <Link className="link" data-testid="link-to-profile" to="/profile">
+            <i className="fa-regular fa-address-card" />
+            Profile
+          </Link>
+        </nav>
+      </div>
+      {loading ? <><img className="loading-header" src={loadingGif} alt="loading" /><h2>Carregando...</h2></> : <h3 data-testid="header-user-name">{user}</h3>}
     </div>
   );
 }
