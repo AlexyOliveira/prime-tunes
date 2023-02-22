@@ -24,12 +24,15 @@ function Header() {
       <img className="logo-header" src={ logo } alt="logo" />
       <div className="links">
         <nav>
-
           <Link className="link" data-testid="link-to-search" to="/search">
             <i className="fa-solid fa-magnifying-glass" />
             Search
           </Link>
-          <Link className="link" data-testid="link-to-favorites" to="/favorites">
+          <Link
+            className="link"
+            data-testid="link-to-favorites"
+            to="/favorites"
+          >
             <i className="fa-regular fa-star" />
             Favorites
           </Link>
@@ -39,7 +42,14 @@ function Header() {
           </Link>
         </nav>
       </div>
-      {loading ? <><img className="loading-header" src={loadingGif} alt="loading" /><h2>Carregando...</h2></> : <h3 data-testid="header-user-name">{user}</h3>}
+      {loading ? (
+        <>
+          <img className="loading-header" src={ loadingGif } alt="loading" />
+          <h2>Carregando...</h2>
+        </>
+      ) : (
+        <h3 data-testid="header-user-name">{user}</h3>
+      )}
     </div>
   );
 }
