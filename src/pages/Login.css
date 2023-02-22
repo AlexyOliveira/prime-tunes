@@ -48,6 +48,18 @@
   color: #003be5;
 }
 
+.loading-area {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.loading-area img {
+  margin-bottom: 20px;
+  width: 60px;
+}
+
 @media ( max-width : 600.98px ) {
 
   ::placeholder {

@@ -3,6 +3,7 @@ import { useHistory } from 'react-router-dom';
 import { createUser } from '../services/userAPI';
 import './Login.css';
 import loginLogo from '../images/login-logo.png';
+import loadingGif from '../images/loading.gif';
 
 function Login() {
   const [nameInput, setNameInput] = useState('');
@@ -34,32 +35,38 @@ function Login() {
   return (
     <div className="login-container" data-testid="page-login">
       {
-        loading ? <h2>Carregando...</h2> : (
-          <form className="login-form">
-            <img className="login-logo" src={ loginLogo } alt="" />
+        loading ? (
+          <div className="loading-area">
+            <img src={ loadingGif } alt="" />
+            <h2>Carregando...</h2>
 
-            <input
-              className="name-box"
-              placeholder="qual é seu nome?"
-              data-testid="login-name-input"
-              onChange={ handleName }
-              id="name"
-              type="text"
-              autoComplete="on"
-            />
+          </div>)
+          : (
+            <form className="login-form">
+              <img className="login-logo" src={ loginLogo } alt="" />
 
-            <button
-              id="login-btn"
-              className="btn-disabled"
-              data-testid="login-submit-button"
-              disabled={ nameInput.length < nameLengthMin }
-              onClick={ handleClick }
-              type="submit"
-            >
-              Entrar
-            </button>
-          </form>
-        )
+              <input
+                className="name-box"
+                placeholder="qual é seu nome?"
+                data-testid="login-name-input"
+                onChange={ handleName }
+                id="name"
+                type="text"
+                autoComplete="on"
+              />
+
+              <button
+                id="login-btn"
+                className="btn-disabled"
+                data-testid="login-submit-button"
+                disabled={ nameInput.length < nameLengthMin }
+                onClick={ handleClick }
+                type="submit"
+              >
+                Entrar
+              </button>
+            </form>
+          )
       }
 
     </div>
