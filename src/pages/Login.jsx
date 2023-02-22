@@ -1,6 +1,8 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { createUser } from '../services/userAPI';
+import './Login.css';
+import loginLogo from '../images/login-logo.png';
 
 function Login() {
   const [nameInput, setNameInput] = useState('');
@@ -12,6 +14,16 @@ function Login() {
     setNameInput(target.value);
   };
 
+  useEffect(() => {
+    const btn = document.getElementById('login-btn');
+
+    if (nameInput.length > 2) {
+      btn.className = 'btn-able';
+    } else if (nameInput.length < nameLengthMin) {
+      btn.className = 'btn-disabled';
+    }
+  }, [nameInput]);
+
   const handleClick = async () => {
     setLoading(true);
     await createUser({ name: nameInput, image: 'https://i.pinimg.com/474x/76/4d/59/764d59d32f61f0f91dec8c442ab052c5.jpg' });
@@ -20,20 +32,25 @@ function Login() {
   };
 
   return (
-    <div data-testid="page-login">
+    <div className="login-container" data-testid="page-login">
       {
         loading ? <h2>Carregando...</h2> : (
-          <form>
-            <label htmlFor="name">
-              Name:
-              <input
-                data-testid="login-name-input"
-                onChange={ handleName }
-                id="name"
-                type="text"
-              />
-            </label>
+          <form className="login-form">
+            <img className="login-logo" src={ loginLogo } alt="" />
+
+            <input
+              className="name-box"
+              placeholder="qual é seu nome?"
+              data-testid="login-name-input"
+              onChange={ handleName }
+              id="name"
+              type="text"
+              autoComplete="on"
+            />
+
             <button
+              id="login-btn"
+              className="btn-disabled"
               data-testid="login-submit-button"
               disabled={ nameInput.length < nameLengthMin }
               onClick={ handleClick }
