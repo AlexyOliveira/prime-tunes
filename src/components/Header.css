@@ -36,3 +36,17 @@ nav {
 .header-component h2 {
   display: none;
 }
+
+.user-info img {
+  border: 2px solid #4670ec;
+  border-radius: 50%;
+  height: 40px;
+  margin-right: 10px;
+  width: 40px;
+}
+
+.user-info {
+  align-items: center;
+  color: #444955;
+  display: flex;
+}

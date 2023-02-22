@@ -8,12 +8,14 @@ import loadingGif from '../images/loading.gif';
 function Header() {
   const [loading, setLoading] = useState(false);
   const [user, setUser] = useState('');
+  const [userImg, setUserImg] = useState('');
 
   useEffect(() => {
     const fetchName = async () => {
       setLoading(true);
       const userResponse = await getUser();
       setUser(userResponse.name);
+      setUserImg(userResponse.image);
       setLoading(false);
     };
     fetchName();
@@ -48,7 +50,10 @@ function Header() {
           <h2>Carregando...</h2>
         </>
       ) : (
-        <h3 data-testid="header-user-name">{user}</h3>
+        <div className="user-info">
+          <img src={ userImg } alt="" />
+          <h3 data-testid="header-user-name">{user}</h3>
+        </div>
       )}
     </div>
   );
