@@ -1,25 +1,33 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import './SongCards.css';
+import { Card } from 'react-bootstrap';
 
 function SongCards({ songs }) {
+  console.log(songs);
   return (
-    <div>
+    <div className="card-scroll-container">
       {songs.map((artist, index) => (
-        <li key={ index }>
-          <img src={ artist.artworkUrl100 } alt="" />
+        <Card style={ { width: '11rem' } } key={ index }>
+          <Card.Img
+            variant="top"
+            src={ artist.artworkUrl100 }
+            alt={ artist.collectionName }
+          />
           <br />
-          <Link
-            className="ir"
-            id="link"
-            data-testid={ `link-to-album-${artist.collectionId}` }
-            to={ `/album/${artist.collectionId}` }
-          >
-            <p>{artist.collectionName}</p>
-          </Link>
-        </li>
+          <Card.Body>
+            <Link
+              className="ir card-title"
+              id="link"
+              data-testid={ `link-to-album-${artist.collectionId}` }
+              to={ `/album/${artist.collectionId}` }
+            >
+              <p>{artist.collectionName}</p>
+            </Link>
+          </Card.Body>
+        </Card>
       ))}
-
     </div>
   );
 }

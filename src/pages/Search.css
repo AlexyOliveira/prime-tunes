@@ -1,4 +1,98 @@
 .search-container {
-  border: 3px solid rebeccapurple;
+  display: flex;
+  width: 100%;
+}
 
+.div {
+  align-items: center;
+  background-image: url('../images/background.png');
+  background-position: top;
+  background-repeat: no-repeat;
+  display: flex;
+  height: 200px;
+  justify-content: center;
+  position: fixed;
+  width: 100%;
+  z-index: 3;
+}
+
+.div input {
+  background: rgba(255, 255, 255, 0.5);
+  border: 2px solid rgba(11, 3, 255, 0.5);
+  border-radius: 23px;
+  color: white;
+  font-size: 20px;
+  height: 40px;
+  left: 504px;
+  padding: 20px;
+  top: 97px;
+  width: 100%;
+
+}
+
+.main {
+  align-items: center;
+  background-color: #111010;
+  display: flex;
+  flex-direction: column;
+  padding-left: 280px;
+  position: relative;
+  text-align: center;
+  width: 100%;
+  z-index: 1;
+}
+
+.main form {
+  display: flex;
+  width: 500px;
+}
+
+.search-button {
+  background: #00d5e2;
+  border-radius: 23px;
+  color: white;
+  cursor: pointer;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  height: 40px;
+  letter-spacing: 0.03em;
+  line-height: 14px;
+  margin-left: 20px;
+  text-transform: uppercase;
+  width: 114px;
+}
+
+::placeholder {
+  color: rgba(255, 255, 255, 0.544);
+  font-size: 16px;
+  text-align: center;
+}
+
+.search-return {
+  display: flex;
+  flex-wrap: nowrap;
+  margin-left: 10px;
+  margin-right: 10px;
+  -webkit-overflow-scrolling: touch;
+  -ms-overflow-style: none;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: none;
+}
+
+.t-result {
+  color: white;
+  font-size: 20px;
+  margin-top: 20px;
+}
+
+.no-album {
+  color: rgba(240, 248, 255, 0.665);
+  height: 100vh;
+  margin-top: 50%;
+}
+
+.card-container {
+  padding-top: 200px;
 }

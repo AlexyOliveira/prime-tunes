@@ -25,42 +25,48 @@ function Search() {
   };
 
   return (
-    <>
+    <div className="search-container" data-testid="page-search">
       <Header />
-      <div className="search-container" data-testid="page-search">
 
-        <form>
-          <input
-            value={ searchInput }
-            onChange={ handleChange }
-            data-testid="search-artist-input"
-            type="text"
-          />
-          <button
-            onClick={ handleClick }
-            disabled={ searchInput.length < searchLengthMin }
-            data-testid="search-artist-button"
-            type="button"
-          >
-            Pesquisar
-          </button>
-        </form>
+      <div className="main">
+        <div className="div">
+          <form>
+            <input
+              placeholder="NOME DO ARTISTA"
+              value={ searchInput }
+              onChange={ handleChange }
+              data-testid="search-artist-input"
+              type="text"
+            />
+            <button
+              className="search-button"
+              onClick={ handleClick }
+              disabled={ searchInput.length < searchLengthMin }
+              data-testid="search-artist-button"
+              type="submit"
+            >
+              Pesquisar
+            </button>
+          </form>
+        </div>
+
         {loading ? (
           <h2>Carregando...</h2>
         ) : (
-          <div>
+          <div className="card-container">
             {songs.length > 0 ? (
               <>
-                <span>{`Resultado de álbuns de: ${saveSearch} `}</span>
+                <div className="t-result">{`Resultado de álbuns de: ${saveSearch} `}</div>
                 <SongCards songs={ songs } />
               </>
             ) : (
-              <h1>Nenhum álbum foi encontrado</h1>
+              <h1 className="no-album">Nenhum álbum foi encontrado</h1>
             )}
           </div>
         )}
       </div>
-    </>
+
+    </div>
   );
 }
 

@@ -1,0 +1,28 @@
+.card-scroll-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 20px;
+  width: 100%;
+
+}
+
+.card {
+  background-color: #ffffff3d;
+  cursor: pointer;
+  margin: 10px;
+  padding: 10px;
+  transition: 1s;
+}
+
+.card:hover {
+  background-color: #ffffff85;
+  color: rgb(8, 8, 8);
+  transition: 1s;
+}
+
+
+.ir {
+  color: rgb(255, 254, 254);
+  text-decoration: none;
+}
