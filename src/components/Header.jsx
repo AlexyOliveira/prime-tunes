@@ -23,7 +23,12 @@ function Header() {
 
   return (
     <div className="header-component" data-testid="header-component">
-      <img className="logo-header" src={ logo } alt="logo" />
+      <div className="logo-div">
+        <Link to="/search">
+          <img className="logo-header" src={ logo } alt="logo" />
+        </Link>
+
+      </div>
       <div className="links">
         <nav>
           <Link className="link" data-testid="link-to-search" to="/search">

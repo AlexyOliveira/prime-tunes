@@ -18,6 +18,7 @@
 .card:hover {
   background-color: #ffffff85;
   color: rgb(8, 8, 8);
+  cursor: auto;
   transition: 1s;
 }
 

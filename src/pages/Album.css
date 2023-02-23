@@ -1,0 +1,30 @@
+.div-album {
+  align-items: center;
+  background-image: url('../images/background.png');
+  background-position: bottom;
+  background-repeat: no-repeat;
+  display: flex;
+  height: 200px;
+  justify-content: start;
+  padding-left: 300px;
+  position: fixed;
+  width: 100%;
+  z-index: 3;
+}
+
+.album-img {
+  margin-right: 40px;
+  width: 150px;
+}
+
+.fav-list {
+  background-color: white;
+}
+
+.album-info {
+  font-size: 20px;
+}
+
+.album-container {
+  background-color: white;
+}

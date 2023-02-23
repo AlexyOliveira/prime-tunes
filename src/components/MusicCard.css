@@ -1,0 +1,57 @@
+.fav-card-container {
+  background-color: rgba(8, 8, 26, 0.958);
+  border-radius: 10px;
+  box-shadow: 0 0 19px black;
+  margin-bottom: 50px;
+  margin-top: 50px;
+  padding: 30px;
+
+}
+
+.fav-card-container ul {
+  align-items: flex-end;
+  display: flex;
+  flex-direction: column;
+  justify-content: first baseline;
+}
+
+.fav-card-container audio {
+  margin: 10px;
+}
+
+.fav-card-container li {
+  align-items: center;
+  display: flex;
+  justify-content: space-evenly;
+  margin: 15px;
+}
+
+.favorite {
+  background-image: url('../images/redHeart.png');
+  background-size: cover;
+  content: '';
+  cursor: pointer;
+  display: inline-block;
+  height: 22px;
+  margin-left: 10px;
+  width: 26px;
+}
+
+.unfavorite {
+  background-image: url('../images/enptyHeart.png');
+  background-size: cover;
+  content: '';
+  cursor: pointer;
+  display: inline-block;
+  height: 23px;
+  margin-left: 10px;
+  width: 26px;
+}
+
+.my-checkbox {
+  display: none;
+}
+
+.loading-fav {
+  width: 26px;
+}

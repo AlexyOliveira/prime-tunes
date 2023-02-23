@@ -5,7 +5,8 @@ import './SongCards.css';
 import { Card } from 'react-bootstrap';
 
 function SongCards({ songs }) {
-  console.log(songs);
+  const artistLength = 20;
+  const slice = 20;
   return (
     <div className="card-scroll-container">
       {songs.map((artist, index) => (
@@ -23,7 +24,11 @@ function SongCards({ songs }) {
               data-testid={ `link-to-album-${artist.collectionId}` }
               to={ `/album/${artist.collectionId}` }
             >
-              <p>{artist.collectionName}</p>
+              <p title={ artist.collectionName }>
+                {artist.collectionName.length > artistLength
+                  ? `${artist.collectionName.slice(0, slice)}...`
+                  : artist.collectionName}
+              </p>
             </Link>
           </Card.Body>
         </Card>

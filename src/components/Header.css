@@ -1,12 +1,13 @@
 .header-component {
   align-items: center;
-  background-color: black;
+  background-color: rgba(8, 8, 26, 0.975);
+  box-shadow: inset 0 0 10px black;
   display: flex;
   flex-direction: column;
   height: 100vh;
-  justify-content: space-around;
+  justify-content: space-between;
   position: fixed;
-  width: 280px;
+  width: 250px;
   z-index: 2;
 }
 
@@ -22,12 +23,15 @@ nav {
 
 .link {
   color: white;
-  margin: 20px;
+  padding: 20px;
   text-decoration: none;
+  transition: 1s;
 }
 
 .link:hover {
   color: green;
+  margin-left: 10px;
+  transition: 1s;
 }
 
 .link i {
@@ -52,6 +56,18 @@ nav {
 
 .user-info {
   align-items: center;
-  color: #fdfdff;
+  color: white;
   display: flex;
+  margin-bottom: 50px;
+}
+
+.logo-div {
+  background-color: white;
+  box-shadow: inset 0 0 20px black;
+  display: flex;
+  flex-direction: column;
+  height: 250px;
+  justify-content: center;
+  padding: 20px;
+  width: 100%;
 }

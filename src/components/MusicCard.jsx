@@ -7,12 +7,18 @@ import {
   removeSong,
 } from '../services/favoriteSongsAPI';
 import getMusics from '../services/musicsAPI';
-import { saveEdited } from '../redux/actions/index';
-import '../css/MusicCard.css';
+import { saveArtWork, saveEdited } from '../redux/actions/index';
+import './MusicCard.css';
+import loadingGif from '../images/loading.gif';
+import musicPlay from '../images/200w.gif';
+import songPaused from '../images/songPaused.png';
 
 function MusicCard({ tracks }) {
+  const correntIndex = -1;
   const [loading, setLoading] = useState(false);
   const [favoriteSongs, setFavoriteSongs] = useState([]);
+  const [isPlay, setIsPlay] = useState(false);
+  const [currentTrackIndex, setCurrentTrackIndex] = useState(correntIndex);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -40,27 +46,59 @@ function MusicCard({ tracks }) {
     setLoading(false);
   };
 
+  const audioPlayHandle = (index, art, name, track) => {
+    dispatch(saveArtWork({ art, name, track }));
+    setIsPlay(true);
+    if (index !== currentTrackIndex) {
+      const currentAudio = document.getElementById(currentTrackIndex);
+      if (currentAudio) {
+        currentAudio.pause();
+      }
+      setCurrentTrackIndex(index);
+    }
+  };
+
+  const audioPauseHandle = () => {
+    const myAudio = document.getElementById(currentTrackIndex);
+    if (myAudio.paused) {
+      setIsPlay(false);
+    }
+  };
+
   return (
-    <div>
-      {loading ? (
-        <h2>Carregando...</h2>
+    <div className="fav-card-container">
+      {isPlay ? (
+        <img src={ musicPlay } alt="playGif" />
       ) : (
-        <ul>
-          {tracks.map((track, index) => (
-            <li key={ index }>
-              {track.trackName}
-              {' '}
-              <audio
-                data-testid="audio-component"
-                src={ track.previewUrl }
-                controls
-              >
-                <track kind="captions" />
-              </audio>
-              <label
-                htmlFor={ track.trackId }
-                data-testid={ `checkbox-music-${track.trackId}` }
-              >
+        <img src={ songPaused } alt="songPause" />
+      )}
+      <ul>
+        {tracks.map((track, index) => (
+          <li key={ index }>
+            {track.trackName}
+            {' '}
+            <audio
+              id={ index }
+              onPlay={ () => audioPlayHandle(
+                index,
+                track.artworkUrl100,
+                track.artistName,
+                track.trackName,
+              ) }
+              onPause={ () => audioPauseHandle() }
+              data-testid="audio-component"
+              src={ track.previewUrl }
+              controls
+            >
+              <track kind="captions" />
+            </audio>
+            <label
+              htmlFor={ track.trackId }
+              data-testid={ `checkbox-music-${track.trackId}` }
+            >
+              {loading ? (
+                <img className="loading-fav" src={ loadingGif } alt="loading" />
+              ) : (
                 <div
                   className={
                     favoriteSongs?.some((fav) => fav.trackId === track.trackId)
@@ -68,20 +106,21 @@ function MusicCard({ tracks }) {
                       : 'unfavorite'
                   }
                 />
-                <input
-                  onChange={ () => handleFavClick(track.trackId) }
-                  type="checkbox"
-                  className="my-checkbox"
-                  id={ track.trackId }
-                  checked={ favoriteSongs?.some(
-                    (fav) => fav.trackId === track.trackId,
-                  ) }
-                />
-              </label>
-            </li>
-          ))}
-        </ul>
-      )}
+              )}
+
+              <input
+                onChange={ () => handleFavClick(track.trackId) }
+                type="checkbox"
+                className="my-checkbox"
+                id={ track.trackId }
+                checked={ favoriteSongs?.some(
+                  (fav) => fav.trackId === track.trackId,
+                ) }
+              />
+            </label>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }
