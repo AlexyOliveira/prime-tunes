@@ -1,7 +1,6 @@
 {
   "name": "trybetunes",
   "version": "1.0.1",
-  "homepage": "https://AlexyOliveira.github.io/prime-tunes",
   "private": true,
   "engines": {
     "node": "16"
