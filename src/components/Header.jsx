@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { getUser } from '../services/userAPI';
 import './Header.css';
 import logo from '../images/login-logo.png';
@@ -9,6 +9,7 @@ function Header() {
   const [loading, setLoading] = useState(false);
   const [user, setUser] = useState('');
   const [userImg, setUserImg] = useState('');
+  const nameMaxLength = 9;
 
   useEffect(() => {
     const fetchName = async () => {
@@ -24,40 +25,54 @@ function Header() {
   return (
     <div className="header-component" data-testid="header-component">
       <div className="logo-div">
-        <Link to="/search">
+        <NavLink to="/search">
           <img className="logo-header" src={ logo } alt="logo" />
-        </Link>
-
+        </NavLink>
       </div>
       <div className="links">
         <nav>
-          <Link className="link" data-testid="link-to-search" to="/search">
+          <NavLink
+            activeClassName="active-link"
+            className="link"
+            data-testid="link-to-search"
+            to="/search"
+          >
             <i className="fa-solid fa-magnifying-glass" />
             Search
-          </Link>
-          <Link
+          </NavLink>
+          <NavLink
+            activeClassName="active-link"
             className="link"
             data-testid="link-to-favorites"
             to="/favorites"
           >
             <i className="fa-regular fa-star" />
             Favorites
-          </Link>
-          <Link className="link" data-testid="link-to-profile" to="/profile">
+          </NavLink>
+          <NavLink
+            activeClassName="active-link"
+            className="link"
+            data-testid="link-to-profile"
+            to="/profile"
+          >
             <i className="fa-regular fa-address-card" />
             Profile
-          </Link>
+          </NavLink>
         </nav>
       </div>
       {loading ? (
-        <>
+        <div className="user-info">
           <img className="loading-header" src={ loadingGif } alt="loading" />
           <h2>Carregando...</h2>
-        </>
+        </div>
       ) : (
         <div className="user-info">
           <img src={ userImg } alt="" />
-          <h3 data-testid="header-user-name">{user}</h3>
+          <h3 title={ user } data-testid="header-user-name">
+            {user.length > nameMaxLength
+              ? `${user.slice(0, nameMaxLength)}...`
+              : user}
+          </h3>
         </div>
       )}
     </div>

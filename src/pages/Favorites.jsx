@@ -10,16 +10,16 @@ function Favorites() {
   const artWork = useSelector((state) => state.artWorkReducer.artWork);
   const name = useSelector((state) => state.artWorkReducer.name);
   const track = useSelector((state) => state.artWorkReducer.track);
-  console.log(artWork);
   return (
     <div data-testid="page-favorites">
       <Header />
       <div className="main album-container">
         <div className="div-album">
           <img style={ { width: '120px', margin: '40px' } } src={ artWork } alt="" />
-          <div>
+          <div className="fav-title">
             <h4>{name}</h4>
             <h5>{track}</h5>
+            <h1>FAVORITA</h1>
           </div>
         </div>
 

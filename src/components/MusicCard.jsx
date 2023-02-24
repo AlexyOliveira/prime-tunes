@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
+import { useLocation } from 'react-router-dom';
 import {
   addSong,
   getFavoriteSongs,
@@ -20,6 +21,7 @@ function MusicCard({ tracks }) {
   const [isPlay, setIsPlay] = useState(false);
   const [currentTrackIndex, setCurrentTrackIndex] = useState(correntIndex);
   const dispatch = useDispatch();
+  const location = useLocation();
 
   useEffect(() => {
     const getFavorite = async () => {
@@ -31,6 +33,9 @@ function MusicCard({ tracks }) {
   }, [loading]);
 
   const handleFavClick = async (id) => {
+    if (location.pathname === '/favorites') {
+      setIsPlay(false);
+    }
     setLoading(true);
     const getFav = await getFavoriteSongs();
 
@@ -47,7 +52,9 @@ function MusicCard({ tracks }) {
   };
 
   const audioPlayHandle = (index, art, name, track) => {
-    dispatch(saveArtWork({ art, name, track }));
+    if (location.pathname === '/favorites') {
+      dispatch(saveArtWork({ art, name, track }));
+    }
     setIsPlay(true);
     if (index !== currentTrackIndex) {
       const currentAudio = document.getElementById(currentTrackIndex);

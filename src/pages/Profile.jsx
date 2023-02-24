@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Header from '../components/Header';
 import { getUser } from '../services/userAPI';
+import './ProfileAndProfileEdit.css';
 
 function Profile() {
   const [loading, setLoading] = useState(false);
@@ -18,31 +19,51 @@ function Profile() {
   }, []);
 
   return (
-    <div data-testid="page-profile">
+    <div>
       <Header />
-      {
-        loading
-          ? <h2>Carregando...</h2> : (
-            <form>
-
-              <img data-testid="profile-image" id="img" src={ userData.image } alt="" />
-
+      <div className="profile-container" data-testid="page-profile">
+        {loading ? (
+          <h2>Carregando...</h2>
+        ) : (
+          <form>
+            <img
+              data-testid="profile-image"
+              id="img"
+              src={ userData.image }
+              alt=""
+            />
+            <div className="profile-info">
               <label htmlFor="name">
-                Nome
-                <h2 id="name">{userData.name}</h2>
+                <span className="nome-email-desc">
+                  <strong>Nome</strong>
+                  {' '}
+                </span>
+                <p id="name">{userData.name}</p>
               </label>
               <label htmlFor="email">
-                E-mail
-                <h2 id="email">{userData.email}</h2>
+                <span className="nome-email-desc">
+                  {' '}
+                  <strong>E-mail</strong>
+                  {' '}
+                </span>
+                <p id="email">{userData.email}</p>
+              </label>
+              <label htmlFor="desc">
+                <span className="nome-email-desc">
+                  {' '}
+                  <strong>Descrição</strong>
+                  {' '}
+                </span>
+                <div className="desc">{userData.description}</div>
               </label>
 
-              <p>{userData.description}</p>
-
-              <Link to="/profile/edit">Editar perfil</Link>
-
-            </form>
-          )
-      }
+              <Link className="button btn btn-primary" to="/profile/edit">
+                Editar perfil
+              </Link>
+            </div>
+          </form>
+        )}
+      </div>
     </div>
   );
 }

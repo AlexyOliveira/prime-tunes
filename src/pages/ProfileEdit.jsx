@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import Header from '../components/Header';
 import { getUser, updateUser } from '../services/userAPI';
+import './ProfileAndProfileEdit.css';
 
 function ProfileEdit() {
   const [loading, setLoading] = useState(false);
@@ -52,70 +53,97 @@ function ProfileEdit() {
   };
 
   return (
-    <div data-testid="page-profile-edit">
+    <div>
       <Header />
-      {loading ? (
-        <h1>Carregando...</h1>
-      ) : (
-        <form>
-          <label htmlFor="image">
-            <img src={ user.image } alt={ user.name } />
-            <input
-              type="url"
-              id="image"
-              data-testid="edit-input-image"
-              value={ user.image }
-              name="image"
-              onChange={ handleChange }
-              required
-            />
-          </label>
-          <label htmlFor="name">
-            Nome:
-            <input
-              onChange={ handleChange }
-              type="text"
-              data-testid="edit-input-name"
-              id="name"
-              name="name"
-              value={ user.name }
-            />
-          </label>
+      <div className="profile-container" data-testid="page-profile-edit">
 
-          <label htmlFor="email">
-            E-mail:
-            <input
-              onChange={ handleChange }
-              type="email"
-              data-testid="edit-input-email"
-              id="email"
-              name="email"
-              value={ user.email }
-            />
-          </label>
-          <label htmlFor="description">
-            Descrição:
-            <textarea
-              onChange={ handleChange }
-              type="text"
-              data-testid="edit-input-description"
-              id="description"
-              name="description"
-              value={ user.description }
-            />
-          </label>
+        {loading ? (
+          <h1>Carregando...</h1>
+        ) : (
+          <form>
+            <label htmlFor="image">
+              <img src={ user.image } alt={ user.name } />
+              <span className="nome-email-desc-edit"><strong>URL</strong></span>
 
-          <button
-            type="button"
-            data-testid="edit-button-save"
-            disabled={ isDisabled }
-            onClick={ handleClick }
-          >
-            Salvar
+              <input
+                className="image-edit"
+                type="url"
+                id="image"
+                data-testid="edit-input-image"
+                value={ user.image }
+                name="image"
+                onChange={ handleChange }
+                required
+              />
+            </label>
+            <div className="profile-info">
+              <label htmlFor="name">
+                <span className="nome-email-desc-edit">
+                  {' '}
+                  <span>Nome:</span>
+                  <br />
+                  {' '}
+                </span>
+                <input
+                  className="input-edit"
+                  onChange={ handleChange }
+                  type="text"
+                  data-testid="edit-input-name"
+                  id="name"
+                  name="name"
+                  value={ user.name }
+                />
+              </label>
 
-          </button>
-        </form>
-      )}
+              <label htmlFor="email">
+                <span className="nome-email-desc-edit">
+                  <strong>E-mail:</strong>
+                  <br />
+                  {' '}
+                </span>
+                <input
+                  className="input-edit"
+                  onChange={ handleChange }
+                  type="email"
+                  data-testid="edit-input-email"
+                  id="email"
+                  name="email"
+                  value={ user.email }
+                />
+              </label>
+              <label htmlFor="description">
+                <span className="nome-email-desc-edit">
+                  <strong>Descrição:</strong>
+                  <br />
+                  {' '}
+                </span>
+                <textarea
+                  style={ { maxHeight: '200px', height: '200px' } }
+                  className="input-edit"
+                  onChange={ handleChange }
+                  type="text"
+                  data-testid="edit-input-description"
+                  id="description"
+                  name="description"
+                  value={ user.description }
+                />
+              </label>
+
+              <button
+                className="button btn btn-primary"
+                type="button"
+                data-testid="edit-button-save"
+                disabled={ isDisabled }
+                onClick={ handleClick }
+              >
+                Salvar
+
+              </button>
+            </div>
+
+          </form>
+        )}
+      </div>
     </div>
   );
 }

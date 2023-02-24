@@ -34,6 +34,12 @@ nav {
   transition: 1s;
 }
 
+.active-link {
+  color: green;
+  margin-left: 10px;
+  transition: 2s;
+}
+
 .link i {
   margin-right: 20px;
 }
@@ -59,6 +65,10 @@ nav {
   color: white;
   display: flex;
   margin-bottom: 50px;
+}
+
+.user-info h3 {
+  font-size: 20px;
 }
 
 .logo-div {
