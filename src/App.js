@@ -15,7 +15,7 @@ class App extends React.Component {
     return (
       <Provider store={ store }>
         <Switch>
-          <Route exact path="/home" component={ Login } />
+          <Route exact path="/prime-tunes" component={ Login } />
           <Route exact path="/Search" component={ Search } />
           <Route exact path="/Album/:id" component={ Album } />
           <Route exact path="/Favorites" component={ Favorites } />
