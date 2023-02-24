@@ -32,8 +32,8 @@ function MusicCard({ tracks }) {
     getFavorite();
   }, [loading]);
 
-  const handleFavClick = async (id) => {
-    if (location.pathname === '/favorites') {
+  const handleFavClick = async (id, target) => {
+    if (location.pathname === '/favorites' && target.id === id) {
       setIsPlay(false);
     }
     setLoading(true);
@@ -116,7 +116,7 @@ function MusicCard({ tracks }) {
               )}
 
               <input
-                onChange={ () => handleFavClick(track.trackId) }
+                onChange={ ({ target }) => handleFavClick(track.trackId, target) }
                 type="checkbox"
                 className="my-checkbox"
                 id={ track.trackId }
