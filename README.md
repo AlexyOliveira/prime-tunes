@@ -1,4 +1,4 @@
-# Seja bem vindo ao Prime Tunes
+# Seja bem vindo ao PrimeTunes
 
 Aplicação desenvolvida e estilizada por mim com base nos meus conhecimentos nas tecnologias mencionadas logo abaixo.
 
