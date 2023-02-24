@@ -16,7 +16,7 @@
 }
 
 .card:hover {
-  background-color: black;
+  background-color: rgb(69, 64, 55);
   color: rgb(8, 8, 8);
   cursor: auto;
   transition: 1s;
@@ -26,10 +26,8 @@
 .ir {
   color: rgb(255, 254, 254);
   text-decoration: none;
-  transition: 1s;
 }
 
 .ir:hover {
-  color: rgb(170, 135, 135);
-  transition: 1s;
+  color: black;
 }

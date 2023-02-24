@@ -33,7 +33,7 @@ function MusicCard({ tracks }) {
   }, [loading]);
 
   const handleFavClick = async (id, target) => {
-    if (location.pathname === '/favorites' && target.id === id) {
+    if (location.pathname === '/favorites' && target.id === id.toString()) {
       setIsPlay(false);
     }
     setLoading(true);

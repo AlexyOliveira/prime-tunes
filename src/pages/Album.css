@@ -2,7 +2,6 @@
   align-items: center;
   background-image: url('../images/background.png');
   background-position: bottom;
-  background-repeat: no-repeat;
   display: flex;
   height: 200px;
   justify-content: start;
