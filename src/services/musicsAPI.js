@@ -1,10 +1,7 @@
 const getMusics = async (id) => {
-  const request = await fetch(`https://itunes.apple.com/lookup?id=${id}&entity=song`, {
-    mode: 'cors',
-    headers: {
-      'Access-Control-Allow-Origin': 'https://prime-tunes-67si3cdtk-alexyoliveira.vercel.app',
-    },
-  });
+  const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
+  const url = `https://itunes.apple.com/lookup?id=${id}&entity=song`;
+  const request = await fetch(proxyUrl + url);
   const requestJson = await request.json();
   return requestJson.results;
 };
