@@ -13,10 +13,8 @@ Uma aplicação capaz de reproduzir músicas das mais variadas bandas e artistas
   - Editar o perfil da pessoa logada;
 
 <details>
-  <summary><strong>👨‍💻 O que deverá ser desenvolvido</strong></summary><br />
-
-   Tecnologias usadas
-
+  <summary><strong>👨‍💻 Tecnologias usadas</strong></summary><br />
+ 
   - REACT
   - BOOTSTRAP
   - REDUX
