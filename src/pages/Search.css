@@ -19,7 +19,7 @@
 
 .main {
   align-items: center;
-  background-color: #111010;
+  background-color: #fbfbfb;
   color: white;
   display: flex;
   flex-direction: column;
@@ -96,10 +96,20 @@
 }
 
 .card-name {
-  font-weight: 900;
+  background-color: rgba(0, 0, 0, 0.498);
+  font-weight: 200;
+  width: 22;
 }
 
 .carousel-control-prev, .carousel-control-next {
   margin-left: 20px;
   margin-right: 20px;
+}
+
+.cos {
+  background-color: black;
+  margin: 20px;
+  padding-left: 100px;
+  padding-right: 100px;
+  width: 35rem;
 }

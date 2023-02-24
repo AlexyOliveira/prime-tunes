@@ -1,22 +1,11 @@
 import React, { useState } from 'react';
 import { Carousel, CarouselItem, Form, InputGroup } from 'react-bootstrap';
+import { useHistory } from 'react-router-dom';
 import searchAlbumsAPI from '../services/searchAlbumsAPI';
 import Header from '../components/Header';
 import SongCards from '../components/SongCards';
+import artistAlbuns from '../services/topArtistsAPI';
 import './Search.css';
-
-const albums = [
-  { albumImg: 'https://www.rollingstone.com/wp-content/uploads/2020/09/R1344-491-harry-styles-fine-line.jpg?w=1000', albumName: 'Harry Styles, ‘Fine Line’' },
-  { albumImg: 'https://www.rollingstone.com/wp-content/uploads/2020/09/R1344-488-The-Stooges-The-Stooges.jpg?w=1000', albumName: 'The Stooges, ‘The Stooges’' },
-  { albumImg: 'https://www.rollingstone.com/wp-content/uploads/2020/09/R1344-492-Bonnie-Raitt-Nick-of-Time.jpg?w=1000', albumName: 'Bonnie Raitt, ‘Nick of Time’' },
-  { albumImg: 'https://www.rollingstone.com/wp-content/uploads/2020/09/R1344-484-Lady-Gaga-Born-This-Way.jpg?w=1000', albumName: 'Lady Gaga, ‘Born This Way’' },
-  { albumImg: 'https://www.rollingstone.com/wp-content/uploads/2020/09/R1344-442-Weeknd-beauty-behind-the-madness.jpg?w=1000', albumName: 'The Weeknd, ‘Beauty Behind the Madness’' },
-  { albumImg: 'https://www.rollingstone.com/wp-content/uploads/2020/09/R1344-375-green-day-dookie.jpg?w=1000', albumName: 'Green Day, ‘Dookie’' },
-  { albumImg: 'https://www.rollingstone.com/wp-content/uploads/2020/09/R1344-382-Tame-Impala-Currents.jpg?w=1000', albumName: 'Tame Impala, ‘Currents’' },
-  { albumImg: 'https://www.rollingstone.com/wp-content/uploads/2020/09/R1344-389-Mariah-Carey-Emancipation-of-Mimi.jpg?w=1000', albumName: 'Mariah Carey, ‘The Emancipation of Mimi’' },
-  { albumImg: 'https://www.rollingstone.com/wp-content/uploads/2020/09/R1344-332-Elvis-Presley-Elvis-Presley.jpg?w=1000', albumName: 'Elvis Presley, ‘Elvis Presley’' },
-  { albumImg: 'https://www.rollingstone.com/wp-content/uploads/2020/09/R1344-324-Coldplay-A-Rush-of-Blood-to-the-Head.jpg?w=1000', albumName: 'Coldplay, ‘A Rush of Blood to the Head’' },
-];
 
 function Search() {
   const [searchInput, setsearchInput] = useState('');
@@ -24,6 +13,8 @@ function Search() {
   const [songs, setSongs] = useState([]);
   const [loading, setLoading] = useState(false);
   const searchLengthMin = 2;
+  const albums = artistAlbuns();
+  const history = useHistory();
 
   const handleChange = ({ target }) => {
     setsearchInput(target.value);
@@ -36,6 +27,10 @@ function Search() {
     const songsResponse = await searchAlbumsAPI(searchInput);
     setLoading(false);
     setSongs(songsResponse);
+  };
+
+  const carouselHandleClick = (albumId) => {
+    history.push(`album/${albumId}`);
   };
 
   return (
@@ -75,16 +70,19 @@ function Search() {
               </>
             ) : (
               <>
-                <h1 className="mb-0 mt-4" style={ { fontSize: '20px' } }>
+                <h1
+                  className="mb-0 mt-4"
+                  style={ { fontSize: '20px', color: 'black' } }
+                >
                   Nenhum álbum foi encontrado
                 </h1>
-                <Carousel
-                  className=""
-                  style={ { width: '500px', padding: '40px' } }
-                >
+                <Carousel className="cos">
                   {albums.map((albu, index) => (
-                    <CarouselItem key={ index }>
-                      <img src={ albu.albumImg } alt="Slide 1" />
+                    <CarouselItem
+                      onClick={ () => carouselHandleClick(albu.id) }
+                      key={ index }
+                    >
+                      <img src={ albu.albumImg } alt="Slide" />
                       <Carousel.Caption>
                         <h3 className="card-name mb-2">{albu.albumName}</h3>
                       </Carousel.Caption>
