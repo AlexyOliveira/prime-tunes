@@ -1,13 +1,15 @@
-# :construction: README customizado em construção ! :construction:
-<!-- Olá, Tryber!
-Esse é apenas um arquivo inicial para o README do seu projeto no qual você pode customizar e reutilizar todas as vezes que for executar o trybe-publisher.
+# Seja bem vindo ao Prime Tunes
 
-Para deixá-lo com a sua cara, basta alterar o seguinte arquivo da sua máquina: ~/.student-repo-publisher/custom/_NEW_README.md
+Uma aplicação capaz de reproduzir músicas das mais variadas bandas e artistas, criar uma lista de músicas favoritas e editar o perfil da pessoa usuária logada. Essa aplicação será capaz de:
 
-É essencial que você preencha esse documento por conta própria, ok?
-Não deixe de usar nossas dicas de escrita de README de projetos, e deixe sua criatividade brilhar!
-:warning: IMPORTANTE: você precisa deixar nítido:
-- quais arquivos/pastas foram desenvolvidos por você; 
-- quais arquivos/pastas foram desenvolvidos por outra pessoa estudante;
-- quais arquivos/pastas foram desenvolvidos pela Trybe.
--->
+         <ul>
+            <li>Fazer login;</li>
+            <li>Pesquisar por uma banda ou artista;</li>
+            <li>Listar os álbuns disponíveis dessa banda ou artista;</li>
+            <li>Visualizar as músicas de um álbum selecionado;</li>
+            <li>Reproduzir uma prévia das músicas deste álbum;</li>
+            <li>Favoritar e desfavoritar músicas;</li>
+            <li>Ver a lista de músicas favoritas;</li>
+            <li>Ver o perfil da pessoa logada;</li>
+            <li>Editar o perfil da pessoa logada;</li>
+          </ul>
