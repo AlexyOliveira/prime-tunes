@@ -1,6 +1,6 @@
 # Seja bem vindo ao Prime Tunes
 
-Aplicação desenvolvida e estilizada por mim
+Aplicação desenvolvida e estilizada por mim com base nos meus conhecimentos nas tecnologias mencionadas logo abaixo.
 
 Uma aplicação capaz de reproduzir músicas das mais variadas bandas e artistas, criar uma lista de músicas favoritas e editar o perfil da pessoa usuária logada. Essa aplicação será capaz de:
 
