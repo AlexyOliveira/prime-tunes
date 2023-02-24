@@ -12,7 +12,7 @@ Uma aplicação capaz de reproduzir músicas das mais variadas bandas e artistas
   - Favoritar e desfavoritar músicas;
   - Ver a lista de músicas favoritas;
   - Ver o perfil da pessoa logada;
-  - Editar o perfil da pessoa logada;
+  - Editar o perfil da pessoa logada; 
 
 <details>
   <summary><strong>👨‍💻 Tecnologias usadas</strong></summary><br />
