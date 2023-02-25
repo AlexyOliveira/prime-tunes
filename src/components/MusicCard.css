@@ -1,21 +1,26 @@
 .fav-card-container {
-  background-color: rgba(255, 255, 255, 0.392);
+  background-color: rgba(255, 255, 255, 0.543);
   border-radius: 10px;
   box-shadow: 0 0 19px black;
+  color: black;
   margin-bottom: 50px;
   margin-top: 20px;
   padding: 30px;
+
 }
 
 .fav-card-container ul {
   align-items: flex-end;
   display: flex;
   flex-direction: column;
-  justify-content: first baseline;
+  justify-content: baseline;
 }
 
-.fav-card-container audio {
-  margin: 10px;
+audio {
+  background-color: black;
+  border-radius: 20px;
+  box-shadow: 0 0 50px black;
+  padding: 10px;
 }
 
 .fav-card-container li {
@@ -25,19 +30,13 @@
   margin: 15px;
 }
 
-.favorite {
-  background-image: url('../images/redHeart.png');
-  background-size: cover;
-  content: '';
-  cursor: pointer;
-  display: inline-block;
-  height: 22px;
-  margin-left: 10px;
-  width: 26px;
+.fav-card-container audio {
+  margin: 10px;
 }
 
-.unfavorite {
-  background-image: url('../images/enptyHeart.png');
+.favorite, .unfavorite {
+  background-position: center;
+  background-repeat: no-repeat;
   background-size: cover;
   content: '';
   cursor: pointer;
@@ -47,6 +46,14 @@
   width: 26px;
 }
 
+.favorite {
+  background-image: url('../images/redHeart.png');
+}
+
+.unfavorite {
+  background-image: url('../images/enptyHeart.png');
+}
+
 .my-checkbox {
   display: none;
 }
@@ -54,3 +61,4 @@
 .loading-fav {
   width: 26px;
 }
+

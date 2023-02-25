@@ -14,6 +14,10 @@ import musicPlay from '../images/200w.gif';
 import songPaused from '../images/songPaused.png';
 import getMusicsById from '../services/getMusicByIdAPI';
 
+const titleLength = 15;
+const slice = 15;
+const timeOut = 1400;
+
 function MusicCard({ tracks }) {
   const correntIndex = -1;
   const [loading, setLoading] = useState(false);
@@ -33,8 +37,10 @@ function MusicCard({ tracks }) {
   }, [loading]);
 
   const handleFavClick = async (trackId, target) => {
-    if (location.pathname === '/favorites' && target.id === trackId) {
-      setIsPlay(false);
+    if (location.pathname === '/favorites' && target.id === trackId.toString()) {
+      setTimeout(() => {
+        setIsPlay(false);
+      }, timeOut);
     }
     setLoading(true);
     const getFav = await getFavoriteSongs();
@@ -83,7 +89,11 @@ function MusicCard({ tracks }) {
       <ul>
         {tracks.map((track, index) => (
           <li key={ index }>
-            {track.title}
+            {
+              track.title.length > titleLength
+                ? `${track.title.slice(0, slice)}...`
+                : track.title
+            }
             {' '}
             <audio
               id={ index }
