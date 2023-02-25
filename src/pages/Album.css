@@ -13,11 +13,10 @@
 
 .album-img {
   margin-right: 40px;
-  width: 150px;
+  width: 170px;
 }
 
 .fav-list {
-  background-color: white;
   border-radius: 13px;
 }
 
@@ -27,4 +26,7 @@
 
 .album-container {
   background-color: white;
+  background-position: center;
+  background-size: 100%;
+  height: auto;
 }

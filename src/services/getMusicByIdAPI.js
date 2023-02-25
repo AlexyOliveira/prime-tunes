@@ -6,15 +6,14 @@ const options = {
   },
 };
 
-const searchAlbumsAPI = async (artist) => {
+const getMusicsById = async (trackId) => {
   try {
-    const response = await fetch(`https://deezerdevs-deezer.p.rapidapi.com/search/?q=${artist}`, options);
+    const response = await fetch(`https://deezerdevs-deezer.p.rapidapi.com/track/${trackId}`, options);
     const data = await response.json();
-    const filterAlbuns = data.data.map((each) => each.album);
-    return filterAlbuns;
+    return data;
   } catch (error) {
     console.error(error);
   }
 };
 
-export default searchAlbumsAPI;
+export default getMusicsById;

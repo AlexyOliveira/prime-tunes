@@ -7,12 +7,12 @@ import {
   getFavoriteSongs,
   removeSong,
 } from '../services/favoriteSongsAPI';
-import getMusics from '../services/musicsAPI';
 import { saveArtWork, saveEdited } from '../redux/actions/index';
 import './MusicCard.css';
 import loadingGif from '../images/loading.gif';
 import musicPlay from '../images/200w.gif';
 import songPaused from '../images/songPaused.png';
+import getMusicsById from '../services/getMusicByIdAPI';
 
 function MusicCard({ tracks }) {
   const correntIndex = -1;
@@ -32,20 +32,21 @@ function MusicCard({ tracks }) {
     getFavorite();
   }, [loading]);
 
-  const handleFavClick = async (id, target) => {
-    if (location.pathname === '/favorites' && target.id === id.toString()) {
+  const handleFavClick = async (trackId, target) => {
+    if (location.pathname === '/favorites' && target.id === trackId) {
       setIsPlay(false);
     }
     setLoading(true);
     const getFav = await getFavoriteSongs();
-
-    const sameVerify = getFav.some((fav) => fav.trackId === id);
+    console.log(getFav);
+    const sameVerify = getFav.some((fav) => fav.id === trackId);
     if (sameVerify) {
-      const response = await getMusics(id);
-      await removeSong(response.pop());
+      const response = await getMusicsById(trackId);
+      await removeSong(response);
     } else if (!sameVerify) {
-      const response = await getMusics(id);
-      await addSong(response.pop());
+      const response = await getMusicsById(trackId);
+
+      await addSong(response);
     }
 
     setLoading(false);
@@ -82,33 +83,33 @@ function MusicCard({ tracks }) {
       <ul>
         {tracks.map((track, index) => (
           <li key={ index }>
-            {track.trackName}
+            {track.title}
             {' '}
             <audio
               id={ index }
               onPlay={ () => audioPlayHandle(
                 index,
-                track.artworkUrl100,
-                track.artistName,
-                track.trackName,
+                track.album.cover_big,
+                track.artist.name,
+                track.title,
               ) }
               onPause={ () => audioPauseHandle() }
               data-testid="audio-component"
-              src={ track.previewUrl }
+              src={ track.preview }
               controls
             >
               <track kind="captions" />
             </audio>
             <label
-              htmlFor={ track.trackId }
-              data-testid={ `checkbox-music-${track.trackId}` }
+              htmlFor={ track.id }
+              data-testid={ `checkbox-music-${track.id}` }
             >
               {loading ? (
                 <img className="loading-fav" src={ loadingGif } alt="loading" />
               ) : (
                 <div
                   className={
-                    favoriteSongs?.some((fav) => fav.trackId === track.trackId)
+                    favoriteSongs?.some((fav) => fav.id === track.id)
                       ? 'favorite'
                       : 'unfavorite'
                   }
@@ -116,12 +117,12 @@ function MusicCard({ tracks }) {
               )}
 
               <input
-                onChange={ ({ target }) => handleFavClick(track.trackId, target) }
+                onChange={ ({ target }) => handleFavClick(track.id, target) }
                 type="checkbox"
                 className="my-checkbox"
-                id={ track.trackId }
+                id={ track.id }
                 checked={ favoriteSongs?.some(
-                  (fav) => fav.trackId === track.trackId,
+                  (fav) => fav.id === track.id,
                 ) }
               />
             </label>

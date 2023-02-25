@@ -23,7 +23,10 @@ function Album() {
   return (
     <div data-testid="page-album">
       <Header />
-      <div className="main album-container">
+      <div
+        style={ { backgroundImage: `url(${musics[0]?.album.cover_xl})` } }
+        className="main album-container"
+      >
         <div className="div-album">
           <img
             style={ {
@@ -32,24 +35,24 @@ function Album() {
               boxShadow: '3px 3px 15px black',
             } }
             className="album-img"
-            src={ musics[0]?.artworkUrl100 }
-            alt={ musics[0]?.collectionName }
+            src={ musics[0]?.album.cover_big }
+            alt={ musics[0]?.album.title }
           />
           <div>
             <h1 className="album-info" data-testid="artist-name">
-              {musics[0]?.artistName}
+              {musics[0]?.artist.name}
             </h1>
             <h3 className="album-info" data-testid="album-name">
-              {musics[0]?.collectionName}
+              {musics[0]?.album.title}
             </h3>
           </div>
         </div>
         <div className="card-container">
           {loading ? (
-            <h2>Carregando...</h2>
+            <div style={ { height: '1000px' } }><h2>Carregando...</h2></div>
           ) : (
             <div className="fav-list">
-              <MusicCard tracks={ musics.slice(1) } />
+              <MusicCard tracks={ musics } />
             </div>
           )}
         </div>

@@ -13,21 +13,21 @@ function SongCards({ songs }) {
         <Card style={ { width: '11rem' } } key={ index }>
           <Card.Img
             variant="top"
-            src={ artist.artworkUrl100 }
-            alt={ artist.collectionName }
+            src={ artist.cover_big }
+            alt={ artist.title }
           />
           <br />
           <Card.Body>
             <Link
               className="ir card-title"
               id="link"
-              data-testid={ `link-to-album-${artist.collectionId}` }
-              to={ `/album/${artist.collectionId}` }
+              data-testid={ `link-to-album-${artist.id}` }
+              to={ `/album/${artist.id}` }
             >
-              <p title={ artist.collectionName }>
-                {artist.collectionName.length > artistLength
-                  ? `${artist.collectionName.slice(0, slice)}...`
-                  : artist.collectionName}
+              <p title={ artist.title }>
+                {artist.title.length > artistLength
+                  ? `${artist.title.slice(0, slice)}...`
+                  : artist.title}
               </p>
             </Link>
           </Card.Body>

@@ -13,9 +13,9 @@ function Favorites() {
   return (
     <div data-testid="page-favorites">
       <Header />
-      <div className="main album-container">
+      <div style={ { backgroundColor: 'black' } } className="main album-container">
         <div className="div-album">
-          <img style={ { width: '120px', margin: '40px' } } src={ artWork } alt="" />
+          <img style={ { width: '170px', margin: '40px' } } src={ artWork } alt="" />
           <div className="fav-title">
             <h4>{name}</h4>
             <h5>{track}</h5>
