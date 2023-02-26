@@ -24,3 +24,4 @@ Uma aplicação capaz de reproduzir músicas das mais variadas bandas e artistas
   - CSS
   - HTML
 </details>
+API - https://www.deezer.com/br/
