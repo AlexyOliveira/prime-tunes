@@ -34,7 +34,8 @@ function Search() {
     history.push(`album/${albumId}`);
   };
 
-  const handleSand = () => {
+  const handleSand = (e) => {
+    e.preventDefault();
     const header = document.getElementById('header');
     header.classList.add('display-change');
   };
