@@ -22,14 +22,20 @@ function Header() {
     fetchName();
   }, []);
 
+  const handleClose = () => {
+    const header = document.getElementById('header');
+    header.classList.remove('display-change');
+  };
+
   return (
-    <div className="header-component" data-testid="header-component">
+    <div id="header" className="header-component" data-testid="header-component">
       <div className="logo-div">
+        <div onClick={ handleClose } className="header-close-btn btn">fechar</div>
         <NavLink to="/search">
           <img className="logo-header" src={ logo } alt="logo" />
         </NavLink>
       </div>
-      <div className="links">
+      <div>
         <nav>
           <NavLink
             activeClassName="active-link"

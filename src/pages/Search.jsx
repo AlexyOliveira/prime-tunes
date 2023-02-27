@@ -5,6 +5,7 @@ import searchAlbumsAPI from '../services/searchAlbumsAPI';
 import Header from '../components/Header';
 import SongCards from '../components/SongCards';
 import artistAlbuns from '../services/topArtistsAPI';
+import menuSand from '../images/menu-sand.png';
 import './Search.css';
 
 function Search() {
@@ -33,13 +34,21 @@ function Search() {
     history.push(`album/${albumId}`);
   };
 
+  const handleSand = () => {
+    const header = document.getElementById('header');
+    header.classList.add('display-change');
+  };
+
   return (
     <div className="search-container" data-testid="page-search">
       <Header />
       <div className="main">
+
         <form className="div">
           <InputGroup className="form mb-3">
+            <img onClick={ handleSand } className="menu-sand" src={ menuSand } alt="menu-sand" />
             <Form.Control
+              className="form-input"
               placeholder="NOME DO ARTISTA"
               value={ searchInput }
               onChange={ handleChange }

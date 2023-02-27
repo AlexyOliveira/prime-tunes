@@ -77,7 +77,44 @@ nav {
   display: flex;
   flex-direction: column;
   height: 250px;
-  justify-content: center;
+  justify-content: space-evenly;
   padding: 20px;
   width: 100%;
+}
+
+.header-close-btn {
+  background-color: green;
+  display: none;
+}
+
+.header-close-btn:hover {
+  background-color: rgb(247, 6, 6);
+}
+
+@media ( max-width : 600px ) {
+
+  .header-mobile {
+    display: block;
+  }
+
+  .header-component {
+    display: none;
+  }
+
+  .display-change {
+    display: flex;
+  }
+
+  .header-close-btn {
+    display: block;
+  }
+}
+
+@media ( min-width : 600px ) {
+
+  .header-component {
+    border: 5px solid rebeccapurple;
+    display: flex;
+  }
+
 }
