@@ -43,10 +43,15 @@ function Search() {
     <div className="search-container" data-testid="page-search">
       <Header />
       <div className="main">
-
         <form className="div">
           <InputGroup className="form mb-3">
-            <img onClick={ handleSand } className="menu-sand" src={ menuSand } alt="menu-sand" />
+            <input
+              type="image"
+              onClick={ handleSand }
+              className="menu-sand"
+              src={ menuSand }
+              alt="menu-sand"
+            />
             <Form.Control
               className="form-input"
               placeholder="NOME DO ARTISTA"

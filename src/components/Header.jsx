@@ -28,9 +28,18 @@ function Header() {
   };
 
   return (
-    <div id="header" className="header-component" data-testid="header-component">
+    <div
+      id="header"
+      className="header-component"
+      data-testid="header-component"
+    >
       <div className="logo-div">
-        <div onClick={ handleClose } className="header-close-btn btn">fechar</div>
+        <input
+          type="button"
+          value="fechar"
+          onClick={ handleClose }
+          className="header-close-btn btn"
+        />
         <NavLink to="/search">
           <img className="logo-header" src={ logo } alt="logo" />
         </NavLink>
