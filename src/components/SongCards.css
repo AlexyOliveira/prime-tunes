@@ -31,3 +31,16 @@
 .ir:hover {
   color: black;
 }
+
+.song-cads-card {
+  width: 11rem;
+}
+
+@media ( max-width : 600px ) {
+
+  .song-cads-card {
+    width: 18rem;
+  }
+
+
+}

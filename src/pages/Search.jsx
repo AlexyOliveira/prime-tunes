@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import { Carousel, CarouselItem, Form, InputGroup } from 'react-bootstrap';
 import { useHistory } from 'react-router-dom';
 import searchAlbumsAPI from '../services/searchAlbumsAPI';
+import SandButton from '../components/SandButton';
 import Header from '../components/Header';
 import SongCards from '../components/SongCards';
 import artistAlbuns from '../services/topArtistsAPI';
-import menuSand from '../images/menu-sand.png';
 import './Search.css';
 
 function Search() {
@@ -34,25 +34,14 @@ function Search() {
     history.push(`album/${albumId}`);
   };
 
-  const handleSand = (e) => {
-    e.preventDefault();
-    const header = document.getElementById('header');
-    header.classList.add('display-change');
-  };
-
   return (
     <div className="search-container" data-testid="page-search">
       <Header />
       <div className="main">
         <form className="div">
           <InputGroup className="form mb-3">
-            <input
-              type="image"
-              onClick={ handleSand }
-              className="menu-sand"
-              src={ menuSand }
-              alt="menu-sand"
-            />
+
+            <SandButton />
             <Form.Control
               className="form-input"
               placeholder="NOME DO ARTISTA"

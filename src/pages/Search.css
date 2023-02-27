@@ -132,25 +132,36 @@
 
   .div {
     height: 100px;
+
   }
 
   .card-container {
     min-height: 0;
-    padding-top: 120px;
+    padding-top: 100px;
   }
 
   .menu-sand {
+    background-color: rgba(0, 0, 0, 0.547);
+    color: white;
     display: block;
     height: 40px;
-    margin-right: 5px;
     width: 40px;
   }
 
-  .form {
-    width: 90%;
+  .menu-sand:hover {
+    background-color: green;
   }
 
-  .form-input {
-    height: 39px;
+  .form {
+    display: flex;
+    width: 85%;
   }
+
+  ::placeholder {
+    color: rgba(0, 0, 0, 0.544);
+    font-size: 12px;
+    text-align: center;
+  }
+
+
 }

@@ -10,7 +10,7 @@ function SongCards({ songs }) {
   return (
     <div className="card-scroll-container">
       {songs.map((artist, index) => (
-        <Card style={ { width: '11rem' } } key={ index }>
+        <Card className="song-cads-card" key={ index }>
           <Card.Img
             variant="top"
             src={ artist.cover_big }
