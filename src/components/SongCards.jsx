@@ -3,10 +3,18 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import './SongCards.css';
 import { Card } from 'react-bootstrap';
+import { useDispatch } from 'react-redux';
+import { saveArtWork } from '../redux/actions';
 
 function SongCards({ songs }) {
   const artistLength = 20;
   const slice = 20;
+  const dispatch = useDispatch();
+
+  const handleClick = (art) => {
+    dispatch(saveArtWork({ art }));
+  };
+
   return (
     <div className="card-scroll-container">
       {songs.map((artist, index) => (
@@ -19,6 +27,7 @@ function SongCards({ songs }) {
           <br />
           <Card.Body>
             <Link
+              onClick={ () => handleClick(artist.cover_big) }
               className="ir card-title"
               id="link"
               data-testid={ `link-to-album-${artist.id}` }

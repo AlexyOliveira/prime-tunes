@@ -59,9 +59,8 @@ function MusicCard({ tracks }) {
   };
 
   const audioPlayHandle = (index, art, name, track) => {
-    if (location.pathname === '/favorites') {
-      dispatch(saveArtWork({ art, name, track }));
-    }
+    dispatch(saveArtWork({ art, name, track }));
+
     dispatch(setIsPlay(true));
     if (index !== currentTrackIndex) {
       const currentAudio = document.getElementById(currentTrackIndex);
@@ -81,6 +80,7 @@ function MusicCard({ tracks }) {
 
   return (
     <div className="fav-card-container">
+
       {isPlay ? (
         <img className="fav-isplay" src={ musicPlay } alt="playGif" />
       ) : (
@@ -89,11 +89,14 @@ function MusicCard({ tracks }) {
       <ul>
         {tracks.map((track, index) => (
           <li key={ index }>
-            {
-              track.title.length > titleLength
-                ? `${track.title.slice(0, slice)}...`
-                : track.title
-            }
+            <img className="card-track-art" src={ track.album.cover_big } alt="" />
+            <div className="card-max-display">
+              {
+                track.title.length > titleLength
+                  ? `${track.title.slice(0, slice)}...`
+                  : track.title
+              }
+            </div>
             {' '}
             <audio
               id={ index }
@@ -115,7 +118,7 @@ function MusicCard({ tracks }) {
               data-testid={ `checkbox-music-${track.id}` }
             >
               {loading ? (
-                <img className="loading-fav" src={ loadingGif } alt="loading" />
+                <img style={ { width: '24px' } } src={ loadingGif } alt="loading" />
               ) : (
                 <div
                   className={
@@ -123,8 +126,17 @@ function MusicCard({ tracks }) {
                       ? 'favorite'
                       : 'unfavorite'
                   }
+
                 />
               )}
+              <div className="card-min-display">
+                {
+                  track.title.length > titleLength
+                    ? `${track.title.slice(0, slice)}...`
+                    : track.title
+                }
+
+              </div>
 
               <input
                 onChange={ ({ target }) => handleFavClick(track.id, target) }
@@ -136,6 +148,7 @@ function MusicCard({ tracks }) {
                 ) }
               />
             </label>
+
           </li>
         ))}
       </ul>

@@ -63,6 +63,11 @@
   .isplay {
     width: 60px;
   }
+
+  .album-container {
+    background-attachment: unset;
+
+  }
 }
 
 @media ( min-width : 600px ) {

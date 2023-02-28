@@ -23,3 +23,16 @@
   flex-direction: column-reverse;
   justify-content: center;
 }
+
+@media ( max-width : 600px ) {
+
+  .fav-art {
+    border: 5px solid rebeccapurple;
+    width: 100px;
+  }
+
+  .fav-title, h4, h5, h1 {
+    font-size: 14px;
+  }
+
+}

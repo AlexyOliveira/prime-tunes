@@ -5,7 +5,6 @@
   color: black;
   margin-bottom: 50px;
   margin-top: 20px;
-  padding: 30px;
 
 }
 
@@ -59,9 +58,6 @@ audio {
   display: none;
 }
 
-.loading-fav {
-  width: 26px;
-}
 
 @media ( max-width : 600px ) {
 
@@ -70,6 +66,7 @@ audio {
     margin-right: 0;
     padding: 0;
     width: 340px;
+
   }
 
   .fav-card-container li {
@@ -78,33 +75,58 @@ audio {
     border-radius: 20px;
     flex-direction: column;
     justify-content: space-evenly;
+    scroll-snap-align: center;
+    transform: translateX(-10%);
     width: 100%;
   }
 
   .fav-card-container img {
     position: relative;
-    width: 100px;
+
   }
 
   .fav-isplay {
     display: none;
   }
 
-  .fav-card-container ul {
-    margin-top: 40px;
-  }
-
-  .loading-fav {
-    width: 10em;
-
-
-  }
 
   .favorite {
-    margin-left: 230px;
+    margin-right: 10px;
   }
 
   .unfavorite {
-    margin-left: 230px;
+    margin-right: 10px;
   }
+
+  .fav-card-container ul {
+    align-items: center;
+    flex-direction: row;
+    margin-top: 40px;
+    overflow: auto;
+    overflow-x: scroll;
+    scroll-snap-stop: normal;
+    scroll-snap-type: x mandatory;
+  }
+
+  .fav-card-container label {
+    display: flex;
+    padding-bottom: 10px;
+  }
+
+  .card-max-display {
+    display: none;
+  }
+
+}
+
+@media ( min-width : 600px ) {
+
+  .card-track-art {
+    display: none;
+  }
+
+  .card-min-display {
+    display: none;
+  }
+
 }
