@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import Header from '../components/Header';
 import MusicCard from '../components/MusicCard';
+import { setIsPlay } from '../redux/actions';
 import './Favorites.css';
 
 function Favorites() {
@@ -10,6 +11,12 @@ function Favorites() {
   const artWork = useSelector((state) => state.artWorkReducer.artWork);
   const name = useSelector((state) => state.artWorkReducer.name);
   const track = useSelector((state) => state.artWorkReducer.track);
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(setIsPlay(false));
+  }, []);
   return (
     <div data-testid="page-favorites">
       <Header />

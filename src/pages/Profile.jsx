@@ -1,14 +1,18 @@
 import React, { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Header from '../components/Header';
+import { setIsPlay } from '../redux/actions';
 import { getUser } from '../services/userAPI';
 import './ProfileAndProfileEdit.css';
 
 function Profile() {
   const [loading, setLoading] = useState(false);
   const [userData, setUserData] = useState([]);
+  const dispatch = useDispatch();
 
   useEffect(() => {
+    dispatch(setIsPlay(false));
     const getUserApi = async () => {
       setLoading(true);
       const data = await getUser();

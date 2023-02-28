@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import {
   addSong,
   getFavoriteSongs,
   removeSong,
 } from '../services/favoriteSongsAPI';
-import { saveArtWork, saveEdited } from '../redux/actions/index';
+import { saveArtWork, saveEdited, setIsPlay } from '../redux/actions/index';
 import './MusicCard.css';
 import loadingGif from '../images/loading.gif';
 import musicPlay from '../images/200w.gif';
@@ -22,10 +22,10 @@ function MusicCard({ tracks }) {
   const correntIndex = -1;
   const [loading, setLoading] = useState(false);
   const [favoriteSongs, setFavoriteSongs] = useState([]);
-  const [isPlay, setIsPlay] = useState(false);
   const [currentTrackIndex, setCurrentTrackIndex] = useState(correntIndex);
   const dispatch = useDispatch();
   const location = useLocation();
+  const isPlay = useSelector((state) => state.isPlayReducer.isPlay);
 
   useEffect(() => {
     const getFavorite = async () => {
@@ -39,7 +39,7 @@ function MusicCard({ tracks }) {
   const handleFavClick = async (trackId, target) => {
     if (location.pathname === '/favorites' && target.id === trackId.toString()) {
       setTimeout(() => {
-        setIsPlay(false);
+        dispatch(setIsPlay(false));
       }, timeOut);
     }
     setLoading(true);
@@ -62,7 +62,7 @@ function MusicCard({ tracks }) {
     if (location.pathname === '/favorites') {
       dispatch(saveArtWork({ art, name, track }));
     }
-    setIsPlay(true);
+    dispatch(setIsPlay(true));
     if (index !== currentTrackIndex) {
       const currentAudio = document.getElementById(currentTrackIndex);
       if (currentAudio) {
@@ -75,16 +75,16 @@ function MusicCard({ tracks }) {
   const audioPauseHandle = () => {
     const myAudio = document.getElementById(currentTrackIndex);
     if (myAudio.paused) {
-      setIsPlay(false);
+      dispatch(setIsPlay(false));
     }
   };
 
   return (
     <div className="fav-card-container">
       {isPlay ? (
-        <img src={ musicPlay } alt="playGif" />
+        <img className="fav-isplay" src={ musicPlay } alt="playGif" />
       ) : (
-        <img src={ songPaused } alt="songPause" />
+        <img className="fav-isplay" src={ songPaused } alt="songPause" />
       )}
       <ul>
         {tracks.map((track, index) => (

@@ -40,3 +40,35 @@
   justify-content: center;
   min-height: 100vh;
 }
+
+@media ( max-width : 600px ) {
+
+  .div-album {
+    height: 120px;
+    justify-content: space-around;
+    margin-right: 0;
+    padding-left: 0;
+  }
+
+  .album-img {
+    margin-left: 40px;
+    margin-right: 0;
+    width: 110px;
+  }
+
+  .album-info {
+    display: none;
+  }
+
+  .isplay {
+    width: 60px;
+  }
+}
+
+@media ( min-width : 600px ) {
+
+  .isplay {
+    display: none;
+  }
+
+}

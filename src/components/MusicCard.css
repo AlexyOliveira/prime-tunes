@@ -14,6 +14,7 @@
   display: flex;
   flex-direction: column;
   justify-content: baseline;
+  margin-top: 40px;
 }
 
 audio {
@@ -62,3 +63,48 @@ audio {
   width: 26px;
 }
 
+@media ( max-width : 600px ) {
+
+  .fav-card-container {
+    background-color: rgba(69, 76, 79, 0.589);
+    margin-right: 0;
+    padding: 0;
+    width: 340px;
+  }
+
+  .fav-card-container li {
+    align-items: center;
+    background-color: white;
+    border-radius: 20px;
+    flex-direction: column;
+    justify-content: space-evenly;
+    width: 100%;
+  }
+
+  .fav-card-container img {
+    position: relative;
+    width: 100px;
+  }
+
+  .fav-isplay {
+    display: none;
+  }
+
+  .fav-card-container ul {
+    margin-top: 40px;
+  }
+
+  .loading-fav {
+    width: 10em;
+
+
+  }
+
+  .favorite {
+    margin-left: 230px;
+  }
+
+  .unfavorite {
+    margin-left: 230px;
+  }
+}

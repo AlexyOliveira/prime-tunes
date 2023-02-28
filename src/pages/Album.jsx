@@ -1,12 +1,17 @@
 import React, { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import Header from '../components/Header';
 import getMusics from '../services/musicsAPI';
 import MusicCard from '../components/MusicCard';
 import './Album.css';
+import SandButton from '../components/SandButton';
+import musicPlay from '../images/200w.gif';
+import songPaused from '../images/songPaused.png';
 
 function Album() {
   const [loading, setLoading] = useState(false);
   const [musics, setMusics] = useState([]);
+  const isPlay = useSelector((state) => state.isPlayReducer.isPlay);
 
   useEffect(() => {
     const url = window.location.href.split('/');
@@ -28,6 +33,7 @@ function Album() {
         className="main album-container"
       >
         <div className="div-album">
+          <SandButton />
           <img
             style={ {
               padding: '10px',
@@ -46,6 +52,11 @@ function Album() {
               {musics[0]?.album.title}
             </h3>
           </div>
+          {isPlay ? (
+            <img className="isplay" src={ musicPlay } alt="playGif" />
+          ) : (
+            <img className="isplay" src={ songPaused } alt="songPause" />
+          )}
         </div>
         <div className="card-container">
           {loading ? (

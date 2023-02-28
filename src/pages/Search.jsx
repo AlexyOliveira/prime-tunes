@@ -1,12 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Carousel, CarouselItem, Form, InputGroup } from 'react-bootstrap';
 import { useHistory } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import searchAlbumsAPI from '../services/searchAlbumsAPI';
 import SandButton from '../components/SandButton';
 import Header from '../components/Header';
 import SongCards from '../components/SongCards';
 import artistAlbuns from '../services/topArtistsAPI';
 import './Search.css';
+import { setIsPlay } from '../redux/actions';
 
 function Search() {
   const [searchInput, setsearchInput] = useState('');
@@ -16,6 +18,11 @@ function Search() {
   const searchLengthMin = 2;
   const albums = artistAlbuns();
   const history = useHistory();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(setIsPlay(false));
+  }, []);
 
   const handleChange = ({ target }) => {
     setsearchInput(target.value);
