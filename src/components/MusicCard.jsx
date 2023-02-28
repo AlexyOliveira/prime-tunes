@@ -90,7 +90,7 @@ function MusicCard({ tracks }) {
         {tracks.map((track, index) => (
           <li key={ index }>
             <img className="card-track-art" src={ track.album.cover_big } alt="" />
-            <p className='track-title'>{track.album.title}</p>
+            <p className="track-title">{track.album.title}</p>
             <div className="card-max-display">
               {
                 track.title.length > titleLength
