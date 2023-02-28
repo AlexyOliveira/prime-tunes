@@ -54,11 +54,9 @@
     margin-left: 40px;
     margin-right: 0;
     width: 110px;
+
   }
 
-  .album-info {
-    display: none;
-  }
 
   .isplay {
     width: 60px;
@@ -67,6 +65,10 @@
   .album-container {
     background-attachment: unset;
 
+  }
+
+  .album-info {
+    display: none;
   }
 }
 

@@ -117,6 +117,14 @@ audio {
     display: none;
   }
 
+  .track-title {
+    background-color: rgba(255, 255, 255, 0.236);
+    color: white;
+    padding: 10px;
+    position: absolute;
+    text-shadow: -1px -1px 0 black , 1px -1px 0 black , -1px 1px 0 black , 1px 1px 0 black;
+    top: 250px;
+  }
 }
 
 @media ( min-width : 600px ) {

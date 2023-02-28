@@ -54,7 +54,7 @@ function Album() {
             <h1 className="album-info" data-testid="artist-name">
               {musics[0]?.artist.name}
             </h1>
-            <h3 className="album-info" data-testid="album-name">
+            <h3 className=" album-info" data-testid="album-name">
               {musics[0]?.album.title}
             </h3>
           </div>
