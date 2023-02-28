@@ -8,12 +8,12 @@ import SandButton from '../components/SandButton';
 import musicPlay from '../images/200w.gif';
 import songPaused from '../images/songPaused.png';
 import { saveArtWork, setIsPlay } from '../redux/actions';
+import loadingGif from '../images/loading.gif';
 
 function Album() {
   const [loading, setLoading] = useState(false);
   const [musics, setMusics] = useState([]);
   const isPlay = useSelector((state) => state.isPlayReducer.isPlay);
-  const trackArt = useSelector((state) => state.artWorkReducer.artWork);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -31,6 +31,11 @@ function Album() {
     dispatch(saveArtWork({ art }));
   }, []);
 
+  useEffect(() => () => {
+    const art = 'https://http2.mlstatic.com/D_NQ_NP_276705-MLB25071094077_092016-O.jpg';
+    dispatch(saveArtWork({ art }));
+  }, [dispatch]);
+
   return (
     <div data-testid="page-album">
       <Header />
@@ -47,7 +52,7 @@ function Album() {
               boxShadow: '3px 3px 15px black',
             } }
             className="album-img"
-            src={ trackArt }
+            src={ musics[0]?.album.cover_big }
             alt={ musics[0]?.album.title }
           />
           <div>
@@ -66,7 +71,14 @@ function Album() {
         </div>
         <div className="card-container">
           {loading ? (
-            <div style={ { height: '1000px' } }><h2>Carregando...</h2></div>
+            <div style={ { height: '1000px' } }>
+              <img
+                style={ { width: '100px', marginTop: '200px' } }
+                src={ loadingGif }
+                alt="loadingGif"
+              />
+              {' '}
+            </div>
           ) : (
             <div className="fav-list">
               <MusicCard tracks={ musics } />

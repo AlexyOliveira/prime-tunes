@@ -58,8 +58,11 @@ audio {
   display: none;
 }
 
+.fav-isplay {
+  padding: 5px;
+}
 
-@media ( max-width : 600px ) {
+@media ( max-width : 667px ) {
 
   .fav-card-container {
     background-color: rgba(69, 76, 79, 0.589);

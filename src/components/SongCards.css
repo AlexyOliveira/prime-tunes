@@ -36,7 +36,7 @@
   width: 11rem;
 }
 
-@media ( max-width : 600px ) {
+@media ( max-width : 667px ) {
 
   .song-cads-card {
     width: 18rem;

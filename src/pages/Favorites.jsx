@@ -18,6 +18,11 @@ function Favorites() {
   useEffect(() => {
     dispatch(setIsPlay(false));
   }, []);
+
+  useEffect(() => () => {
+    dispatch(setIsPlay(false));
+  }, [dispatch]);
+
   return (
     <div data-testid="page-favorites">
       <Header />
@@ -27,15 +32,15 @@ function Favorites() {
           <img className="fav-art" src={ artWork } alt="" />
           <div className="fav-title">
             <h4>{name}</h4>
-            <h5>{track}</h5>
+            <h5 title={ track }>
+              {track?.length > 25 ? `${track.slice(0, 25)}...` : track}
+            </h5>
             <h1>FAVORITA</h1>
           </div>
         </div>
 
-        <div className="card-container">
-          {
-            loading ? <h2>Carregando...</h2> : <MusicCard tracks={ favorites } />
-          }
+        <div className="card-container-fav">
+          {loading ? <h2>Carregando...</h2> : <MusicCard tracks={ favorites } />}
         </div>
       </div>
     </div>

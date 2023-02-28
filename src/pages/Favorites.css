@@ -1,5 +1,5 @@
 .fav {
-  background-color: black;
+  background-color: rgba(0, 0, 0, 0.918);
   min-height: 100vh;
 }
 
@@ -22,7 +22,11 @@
   justify-content: center;
 }
 
-@media ( max-width : 600px ) {
+.card-container-fav {
+  margin-top: 100px;
+}
+
+@media ( max-width : 667px ) {
 
   .fav-art {
     border: 5px solid rebeccapurple;
@@ -33,4 +37,32 @@
     font-size: 14px;
   }
 
+  .card-container-fav {
+    margin-top: 95px;
+  }
+
+}
+
+@media ( min-width : 600px ) {
+
+  .isplay {
+    display: none;
+  }
+
+  .menu-sand {
+    display: none;
+  }
+
+  .fav-art {
+    margin-right: 40px;
+    width: 170px;
+  }
+
+  .track-title {
+    display: none;
+  }
+
+  .card-container-fav {
+    margin-top: 200px;
+  }
 }

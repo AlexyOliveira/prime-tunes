@@ -41,7 +41,7 @@
   min-height: 100vh;
 }
 
-@media ( max-width : 600px ) {
+@media ( max-width : 667px ) {
 
   .div-album {
     height: 120px;

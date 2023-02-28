@@ -27,7 +27,7 @@ function SongCards({ songs }) {
           <br />
           <Card.Body>
             <Link
-              onClick={ () => handleClick(artist.cover_big) }
+              onClick={ () => handleClick(artist.cover_mediam) }
               className="ir card-title"
               id="link"
               data-testid={ `link-to-album-${artist.id}` }
