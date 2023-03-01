@@ -12,6 +12,7 @@ function Favorites() {
   const artWork = useSelector((state) => state.artWorkReducer.artWork);
   const name = useSelector((state) => state.artWorkReducer.name);
   const track = useSelector((state) => state.artWorkReducer.track);
+  const trackLength = 25;
 
   const dispatch = useDispatch();
 
@@ -33,7 +34,7 @@ function Favorites() {
           <div className="fav-title">
             <h4>{name}</h4>
             <h5 title={ track }>
-              {track?.length > 25 ? `${track.slice(0, 25)}...` : track}
+              {track?.length > trackLength ? `${track.slice(0, trackLength)}...` : track}
             </h5>
             <h1>FAVORITA</h1>
           </div>
