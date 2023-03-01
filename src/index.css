@@ -50,3 +50,11 @@ body {
 .tutorial-text span {
   color: red;
 }
+
+@media ( min-width : 600px ) {
+
+  .tut {
+    display: none;
+  }
+
+}

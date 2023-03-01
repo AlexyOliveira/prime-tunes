@@ -4,8 +4,10 @@ import '../index.css';
 
 function HandleTutorial() {
   useEffect(() => {
-    if (!localStorage.getItem('isTutorial')) {
-      const a = document.getElementById('a');
+    const innerWidth = 600;
+    const a = document.getElementById('a');
+    console.log(window.innerWidth);
+    if (!localStorage.getItem('isTutorial') && window.innerWidth <= innerWidth) {
       a.style.display = 'flex';
     }
   }, []);
