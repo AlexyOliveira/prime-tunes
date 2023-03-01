@@ -27,7 +27,7 @@ function HandleTutorial() {
       />
       <div className="tutorial-text">
         <p>Arraste o card para  a direita ou esquerda para trocar de musica</p>
-        <span>click na tela para sair</span>
+        <span>toque fora desse aviso para sair</span>
       </div>
 
     </div>
