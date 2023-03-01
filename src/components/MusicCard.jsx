@@ -13,6 +13,7 @@ import loadingGif from '../images/loading.gif';
 import musicPlay from '../images/200w.gif';
 import songPaused from '../images/songPaused.png';
 import getMusicsById from '../services/getMusicByIdAPI';
+import HandleTutorial from './HandleTutorial';
 
 const titleLength = 15;
 const slice = 15;
@@ -79,81 +80,85 @@ function MusicCard({ tracks }) {
   };
 
   return (
-    <div className="fav-card-container">
+    <>
+      <HandleTutorial />
+      <div className="fav-card-container">
 
-      {isPlay ? (
-        <img className="fav-isplay" src={ musicPlay } alt="playGif" />
-      ) : (
-        <img className="fav-isplay" src={ songPaused } alt="songPause" />
-      )}
-      <ul>
-        {tracks.map((track, index) => (
-          <li key={ index }>
-            <img className="card-track-art" src={ track.album.cover_big } alt="" />
-            <p className="track-title">{track.album.title}</p>
-            <div className="card-max-display">
-              {
-                track.title.length > titleLength
-                  ? `${track.title.slice(0, slice)}...`
-                  : track.title
-              }
-            </div>
-            {' '}
-            <audio
-              id={ index }
-              onPlay={ () => audioPlayHandle(
-                index,
-                track.album.cover_big,
-                track.artist.name,
-                track.title,
-              ) }
-              onPause={ () => audioPauseHandle() }
-              data-testid="audio-component"
-              src={ track.preview }
-              controls
-            >
-              <track kind="captions" />
-            </audio>
-            <label
-              htmlFor={ track.id }
-              data-testid={ `checkbox-music-${track.id}` }
-            >
-              {loading ? (
-                <img style={ { width: '24px' } } src={ loadingGif } alt="loading" />
-              ) : (
-                <div
-                  className={
-                    favoriteSongs?.some((fav) => fav.id === track.id)
-                      ? 'favorite'
-                      : 'unfavorite'
-                  }
+        {isPlay ? (
+          <img className="fav-isplay" src={ musicPlay } alt="playGif" />
+        ) : (
+          <img className="fav-isplay" src={ songPaused } alt="songPause" />
+        )}
+        <ul>
 
-                />
-              )}
-              <div className="card-min-display">
+          {tracks.map((track, index) => (
+            <li key={ index }>
+              <img className="card-track-art" src={ track.album.cover_big } alt="img" />
+              <p className="track-title">{track.album.title}</p>
+              <div className="card-max-display">
                 {
                   track.title.length > titleLength
                     ? `${track.title.slice(0, slice)}...`
                     : track.title
                 }
-
               </div>
-
-              <input
-                onChange={ ({ target }) => handleFavClick(track.id, target) }
-                type="checkbox"
-                className="my-checkbox"
-                id={ track.id }
-                checked={ favoriteSongs?.some(
-                  (fav) => fav.id === track.id,
+              {' '}
+              <audio
+                id={ index }
+                onPlay={ () => audioPlayHandle(
+                  index,
+                  track.album.cover_big,
+                  track.artist.name,
+                  track.title,
                 ) }
-              />
-            </label>
+                onPause={ () => audioPauseHandle() }
+                data-testid="audio-component"
+                src={ track.preview }
+                controls
+              >
+                <track kind="captions" />
+              </audio>
+              <label
+                htmlFor={ track.id }
+                data-testid={ `checkbox-music-${track.id}` }
+              >
+                {loading ? (
+                  <img style={ { width: '24px' } } src={ loadingGif } alt="loading" />
+                ) : (
+                  <div
+                    className={
+                      favoriteSongs?.some((fav) => fav.id === track.id)
+                        ? 'favorite'
+                        : 'unfavorite'
+                    }
 
-          </li>
-        ))}
-      </ul>
-    </div>
+                  />
+                )}
+                <div className="card-min-display">
+                  {
+                    track.title.length > titleLength
+                      ? `${track.title.slice(0, slice)}...`
+                      : track.title
+                  }
+
+                </div>
+
+                <input
+                  onChange={ ({ target }) => handleFavClick(track.id, target) }
+                  type="checkbox"
+                  className="my-checkbox"
+                  id={ track.id }
+                  checked={ favoriteSongs?.some(
+                    (fav) => fav.id === track.id,
+                  ) }
+                />
+              </label>
+
+            </li>
+          ))}
+        </ul>
+      </div>
+    </>
   );
 }
 

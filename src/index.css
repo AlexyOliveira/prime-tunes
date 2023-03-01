@@ -22,3 +22,30 @@ body {
   font-family: 'Epilogue', sans-serif;
 }
 
+.tutorial {
+  position: fixed;
+  z-index: 3;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+ background-color: rgba(240, 248, 255, 0.87);
+ cursor: pointer;
+}
+
+.tutorial-text {
+  cursor: pointer;
+  position: fixed;
+  top: 250px;
+  left: 13px;
+  z-index: 3;
+  width: 200px;
+  color: rgb(0, 0, 0);
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: 900;
+  font-size: 20px;
+}
+
+.tutorial-text span {
+  color: red;
+}
