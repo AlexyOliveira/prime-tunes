@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Header from '../components/Header';
+import SandButton from '../components/SandButton';
 import { setIsPlay } from '../redux/actions';
 import { getUser } from '../services/userAPI';
 import './ProfileAndProfileEdit.css';
@@ -25,6 +26,9 @@ function Profile() {
   return (
     <div>
       <Header />
+      <div className="div-profile div-album">
+        <SandButton />
+      </div>
       <div className="profile-container" data-testid="page-profile">
         {loading ? (
           <h2>Carregando...</h2>

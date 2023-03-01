@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import Header from '../components/Header';
+import SandButton from '../components/SandButton';
 import { getUser, updateUser } from '../services/userAPI';
+import loadingGif from '../images/loading.gif';
 import './ProfileAndProfileEdit.css';
 
 function ProfileEdit() {
@@ -55,27 +57,32 @@ function ProfileEdit() {
   return (
     <div>
       <Header />
-      <div className="profile-container" data-testid="page-profile-edit">
-
+      <div className="div-profile div-album">
+        <SandButton />
+      </div>
+      <div className="ad profile-container" data-testid="page-profile-edit">
         {loading ? (
-          <h1>Carregando...</h1>
+          <div className="loading-profile">
+            <h1 className="loading-profile-h1">Carregando...</h1>
+            <img src={ loadingGif } alt="loading" />
+          </div>
         ) : (
           <form>
-            <label htmlFor="image">
-              <img src={ user.image } alt={ user.name } />
-              <span className="nome-email-desc-edit"><strong>URL</strong></span>
 
-              <input
-                className="image-edit"
-                type="url"
-                id="image"
-                data-testid="edit-input-image"
-                value={ user.image }
-                name="image"
-                onChange={ handleChange }
-                required
-              />
-            </label>
+            <img src={ user.image } alt={ user.name } />
+            <span className="nome-email-desc-edit"><strong>URL</strong></span>
+
+            <input
+              className="image-edit"
+              type="url"
+              id="image"
+              data-testid="edit-input-image"
+              value={ user.image }
+              name="image"
+              onChange={ handleChange }
+              required
+            />
+
             <div className="profile-info">
               <label htmlFor="name">
                 <span className="nome-email-desc-edit">
