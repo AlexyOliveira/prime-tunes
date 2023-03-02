@@ -69,13 +69,14 @@ function ProfileEdit() {
         ) : (
           <form>
 
-            <img src={ user.image } alt={ user.name } />
+            <img className="profile-image" src={ user.image } alt={ user.name } />
             <span className="nome-email-desc-edit"><strong>URL</strong></span>
 
             <input
               className="image-edit"
               type="url"
               id="image"
+              placeholder="cole o link da sua imagem aqui"
               data-testid="edit-input-image"
               value={ user.image }
               name="image"

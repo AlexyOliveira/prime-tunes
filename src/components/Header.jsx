@@ -9,6 +9,7 @@ function Header() {
   const [loading, setLoading] = useState(false);
   const [user, setUser] = useState('');
   const [userImg, setUserImg] = useState('');
+  const noneProfile = 'https://i.pinimg.com/474x/76/4d/59/764d59d32f61f0f91dec8c442ab052c5.jpg';
   const nameMaxLength = 9;
 
   useEffect(() => {
@@ -82,7 +83,7 @@ function Header() {
         </div>
       ) : (
         <div className="user-info">
-          <img src={ userImg } alt="" />
+          <img src={ userImg.length === 0 ? noneProfile : userImg } alt="profile" />
           <h3 title={ user } data-testid="header-user-name">
             {user.length > nameMaxLength
               ? `${user.slice(0, nameMaxLength)}...`

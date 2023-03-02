@@ -35,6 +35,7 @@ function Profile() {
         ) : (
           <form>
             <img
+              className="profile-image"
               data-testid="profile-image"
               id="img"
               src={ userData.image }

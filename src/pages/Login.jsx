@@ -27,7 +27,7 @@ function Login() {
 
   const handleClick = async () => {
     setLoading(true);
-    await createUser({ name: nameInput, image: 'https://i.pinimg.com/474x/76/4d/59/764d59d32f61f0f91dec8c442ab052c5.jpg' });
+    await createUser({ name: nameInput });
     setLoading(false);
     history.push('/search');
   };
