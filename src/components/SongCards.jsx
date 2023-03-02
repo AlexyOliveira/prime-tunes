@@ -22,7 +22,7 @@ function SongCards({ songs }) {
         <Card className="song-cads-card" key={ index }>
           <Card.Img
             variant="top"
-            src={ window.innerWidth <= ws ? artist.cover_medium : artist.cover_big }
+            src={ artist.cover_big }
             alt={ artist.title }
           />
           <br />
