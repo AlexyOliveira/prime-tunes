@@ -18,6 +18,7 @@ import HandleTutorial from './HandleTutorial';
 const titleLength = 15;
 const slice = 15;
 const timeOut = 1400;
+const ws = 600;
 
 function MusicCard({ tracks }) {
   const correntIndex = -1;
@@ -107,7 +108,7 @@ function MusicCard({ tracks }) {
                 id={ index }
                 onPlay={ () => audioPlayHandle(
                   index,
-                  track.album.cover_big,
+                  window.innerWidth <= ws ? track.album.cover_big : track.album.cover_xl,
                   track.artist.name,
                   track.title,
                 ) }

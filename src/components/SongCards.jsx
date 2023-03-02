@@ -10,6 +10,7 @@ function SongCards({ songs }) {
   const artistLength = 20;
   const slice = 20;
   const dispatch = useDispatch();
+  const ws = 600;
 
   const handleClick = (art) => {
     dispatch(saveArtWork({ art }));
@@ -21,7 +22,7 @@ function SongCards({ songs }) {
         <Card className="song-cads-card" key={ index }>
           <Card.Img
             variant="top"
-            src={ artist.cover_big }
+            src={ window.innerWidth <= ws ? artist.cover_medium : artist.cover_big }
             alt={ artist.title }
           />
           <br />
