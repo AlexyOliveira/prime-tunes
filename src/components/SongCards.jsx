@@ -10,7 +10,6 @@ function SongCards({ songs }) {
   const artistLength = 20;
   const slice = 20;
   const dispatch = useDispatch();
-  const ws = 600;
 
   const handleClick = (art) => {
     dispatch(saveArtWork({ art }));
