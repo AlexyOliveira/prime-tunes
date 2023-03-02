@@ -107,7 +107,7 @@ function MusicCard({ tracks }) {
                 id={ index }
                 onPlay={ () => audioPlayHandle(
                   index,
-                  track.album.cover_xl,
+                  track.album.cover_big,
                   track.artist.name,
                   track.title,
                 ) }
