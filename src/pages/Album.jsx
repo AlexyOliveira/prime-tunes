@@ -15,6 +15,7 @@ function Album() {
   const [musics, setMusics] = useState([]);
   const isPlay = useSelector((state) => state.isPlayReducer.isPlay);
   const dispatch = useDispatch();
+  const innerWidth = 600;
 
   useEffect(() => {
     setIsPlay(false);
@@ -27,6 +28,10 @@ function Album() {
       setMusics(musicsResponse);
     };
     fetchSongById();
+    if (window.innerWidth <= innerWidth) {
+      const art = musics[0]?.album.cover_xl;
+      dispatch(saveArtWork({ art }));
+    }
     const art = musics[0]?.album.cover_xl;
     dispatch(saveArtWork({ art }));
   }, []);
@@ -40,7 +45,13 @@ function Album() {
     <div data-testid="page-album">
       <Header />
       <div
-        style={ { backgroundImage: `url(${musics[0]?.album.cover_xl})` } }
+        style={ {
+          backgroundImage: `url(${
+            window.innerWidth <= innerWidth
+              ? musics[0]?.album.cover_big
+              : musics[0]?.album.cover_xl
+          })`,
+        } }
         className="main album-container"
       >
         <div className="div-album">
